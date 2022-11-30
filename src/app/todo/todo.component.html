@@ -1,13 +1,16 @@
-<h2 class="text-center">
-    Todo App
-  </h2>
-  <div class="col-md-8 offset-md-2">
-    <input type="text" class="form-control" [formControl]="content" (change)="change()">
-    <ul>
-      <li (click)="toggleTodo(i)"
-          [class.complete]="todo.complete"
-          *ngFor="let todo of todos; index as i">
-        {{todo.content}}
-      </li>
-    </ul>
-  </div>
+<h2>Todo App with HttpClient</h2>
+<div>
+  <input type="text" [formControl]="content" (keydown.enter)="addTodo()">
+</div>
+
+<ul>
+  <li *ngFor="let todo of todos;index as i"
+      [class.completed]="todo.complete">
+    <div (click)="toggleTodo(i)" >
+      Id: {{todo.id}}
+      <br>
+      {{todo.title}}
+    </div>
+    <button (click)="deleteTodo(i)" class="btn btn-success">Delete</button>
+  </li>
+</ul>
